@@ -18,3 +18,9 @@ jobs:
           java-version: '17'
       - name: Build Project
         run: mvn clean install -DskipTests
+      - name: Login No Docker Hub
+        run: docker login -u ${{secrets.DOCKER_HUB_USER}} -p ${{secrets.DOCKER_HUB_PASSWORD}}
+      - name: Build Docker Image
+        run: docker build -t zemiro/user_service_image .
+      - name: Push image docker
+        run: docker push zemiro/user_service_image
