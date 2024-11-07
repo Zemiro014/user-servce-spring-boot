@@ -3,6 +3,8 @@ name: Deploy Application User-Service
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
@@ -17,9 +19,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - name: Build Project
-        run: mvn clean install -DskipTests
+        run: mvn clean install
       - name: Login No Docker Hub
-        run: docker login -u ${{secrets.DOCKER_HUB_USER}} -p ${{secrets.DOCKER_HUB_PASSWORD}}
+        run: echo "${{secrets.DOCKER_HUB_PASSWORD}}" | docker login -u "${{secrets.DOCKER_HUB_USER}}" --password-stdin
       - name: Build Docker Image
         run: docker build -t zemiro/user_service_image .
       - name: Push image docker

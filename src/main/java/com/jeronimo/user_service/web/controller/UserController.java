@@ -1,4 +1,4 @@
-package com.jeronimo.user_service.web;
+package com.jeronimo.user_service.web.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
