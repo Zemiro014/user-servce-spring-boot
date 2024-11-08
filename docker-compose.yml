@@ -1,0 +1,10 @@
+version: '3'
+services:
+  pg-tasks:
+    container_name: pg-user
+    image: postgres:10
+    ports:
+      - 5433:5432  # porta externa:porta interna em relação ao container
+    environment:
+      - POSTGRES_DB=userDB
+      - POSTGRES_PASSWORD=password
