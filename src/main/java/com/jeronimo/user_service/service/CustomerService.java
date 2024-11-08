@@ -5,6 +5,7 @@ import com.jeronimo.user_service.repositories.CustomerRepository;
 import com.jeronimo.user_service.web.dtoResponse.CustomerResponseDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,5 +24,11 @@ public class CustomerService {
                 .lastName(customer.getLastName())
                 .build();
         return Optional.of(responseDTO);
+    }
+
+    public List<CustomerResponseDTO> getAllCustomer() {
+        return customerRepository.findAll()
+                .stream()
+                .map(customer -> new CustomerResponseDTO(customer.getFirstName(), customer.getLastName())).toList();
     }
 }

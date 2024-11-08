@@ -10,6 +10,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -46,5 +48,29 @@ class CustomerServiceTest {
         assertEquals("Doe", responseDTO.get().getLastName());
 
         verify(customerRepository, times(1)).findById(1L);
+    }
+
+    @Test
+    void testGetAllCustomer(){
+        when(customerRepository.findAll()).thenReturn(buildListOfCustomer());
+        List<CustomerResponseDTO> customers = customerService.getAllCustomer();
+        assertEquals(customers.size(), 2);
+
+        verify(customerRepository, times(1)).findAll();
+    }
+
+    private List<Customer> buildListOfCustomer() {
+        Customer customer1 = new Customer();
+        customer1.setId(2L);
+        customer1.setVersion(1L);
+        customer1.setFirstName("First Name");
+        customer1.setLastName("Second Name");
+
+        Customer customer2 = new Customer();
+        customer2.setId(2L);
+        customer2.setVersion(1L);
+        customer2.setFirstName("First Name");
+        customer2.setLastName("Second Name");
+        return Arrays.asList(customer1, customer2);
     }
 }
