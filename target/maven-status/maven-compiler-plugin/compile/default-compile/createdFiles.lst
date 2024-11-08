@@ -1,9 +1,0 @@
-com/jeronimo/user_service/service/CustomerService.class
-com/jeronimo/user_service/web/dtoResponse/CustomerResponseDTO.class
-com/jeronimo/user_service/UserServiceApplication.class
-com/jeronimo/user_service/domain/Customer$CustomerBuilder.class
-com/jeronimo/user_service/domain/BaseEntity.class
-com/jeronimo/user_service/repositories/CustomerRepository.class
-com/jeronimo/user_service/web/dtoResponse/CustomerResponseDTO$CustomerResponseDTOBuilder.class
-com/jeronimo/user_service/domain/Customer.class
-com/jeronimo/user_service/web/controller/UserController.class
