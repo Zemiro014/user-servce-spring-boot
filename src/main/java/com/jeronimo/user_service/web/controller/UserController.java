@@ -5,6 +5,7 @@ import com.jeronimo.user_service.web.dtoResponse.CustomerResponseDTO;
 import jakarta.websocket.server.PathParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +25,7 @@ public class UserController {
     }
 
     @GetMapping("customer/{id}")
-    public ResponseEntity<CustomerResponseDTO> getCustomerByIs(@PathParam("id") Long id){
+    public ResponseEntity<CustomerResponseDTO> getCustomerByIs(@PathVariable("id") Long id){
         return ResponseEntity.ok(customerService.getCustomerById(id).orElseThrow());
     }
 }
