@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   pg-tasks:
     container_name: pg-user
@@ -8,3 +8,15 @@ services:
     environment:
       - POSTGRES_DB=userDB
       - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+
+  user_service:
+    container_name: user-service
+    image: zemiro/user_service_image
+    environment:
+      - DATABASE_HOST=localhost
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWD=password
+    ports:
+      - "8080:8080"
+    network_mode: host

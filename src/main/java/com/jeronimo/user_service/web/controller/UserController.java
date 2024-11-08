@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
@@ -27,5 +29,10 @@ public class UserController {
     @GetMapping("customer/{id}")
     public ResponseEntity<CustomerResponseDTO> getCustomerByIs(@PathVariable("id") Long id){
         return ResponseEntity.ok(customerService.getCustomerById(id).orElseThrow());
+    }
+
+    @GetMapping("customer/all")
+    public ResponseEntity<List<CustomerResponseDTO>> getAllCustomer(@PathVariable("id") Long id){
+        return ResponseEntity.ok(customerService.getAllCustomer());
     }
 }
