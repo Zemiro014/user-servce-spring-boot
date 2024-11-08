@@ -18,6 +18,10 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+      - name: Verify Java Version
+        run: java -version
+      - name: Clean Maven Cache
+        run: mvn clean install -U
       - name: Build Project
         run: mvn clean install
       - name: Login No Docker Hub

@@ -12,10 +12,10 @@ import java.util.Objects;
 public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Version
-    private long version;
+    private Long version;
 
     @Override
     public boolean equals(Object o) {

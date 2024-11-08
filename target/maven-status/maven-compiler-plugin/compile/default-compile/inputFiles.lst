@@ -1,0 +1,8 @@
+/home/jeronimo/Documents/SOFTWARE PROJECTS/user-servce-spring-boot/src/main/java/com/jeronimo/user_service/UserServiceApplication.java
+/home/jeronimo/Documents/SOFTWARE PROJECTS/user-servce-spring-boot/src/main/java/com/jeronimo/user_service/bootstrap/DataInitializer.java
+/home/jeronimo/Documents/SOFTWARE PROJECTS/user-servce-spring-boot/src/main/java/com/jeronimo/user_service/domain/BaseEntity.java
+/home/jeronimo/Documents/SOFTWARE PROJECTS/user-servce-spring-boot/src/main/java/com/jeronimo/user_service/domain/Customer.java
+/home/jeronimo/Documents/SOFTWARE PROJECTS/user-servce-spring-boot/src/main/java/com/jeronimo/user_service/repositories/CustomerRepository.java
+/home/jeronimo/Documents/SOFTWARE PROJECTS/user-servce-spring-boot/src/main/java/com/jeronimo/user_service/service/CustomerService.java
+/home/jeronimo/Documents/SOFTWARE PROJECTS/user-servce-spring-boot/src/main/java/com/jeronimo/user_service/web/controller/UserController.java
+/home/jeronimo/Documents/SOFTWARE PROJECTS/user-servce-spring-boot/src/main/java/com/jeronimo/user_service/web/dtoResponse/CustomerResponseDTO.java
