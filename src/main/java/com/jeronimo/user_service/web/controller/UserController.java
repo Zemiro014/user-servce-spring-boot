@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @GetMapping("customer/all")
-    public ResponseEntity<List<CustomerResponseDTO>> getAllCustomer(@PathVariable("id") Long id){
+    public ResponseEntity<List<CustomerResponseDTO>> getAllCustomer(){
         return ResponseEntity.ok(customerService.getAllCustomer());
     }
 }
