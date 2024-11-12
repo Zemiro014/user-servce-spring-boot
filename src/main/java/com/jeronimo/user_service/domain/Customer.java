@@ -43,4 +43,12 @@ public class Customer extends BaseEntity{
         result = 31 * result + Objects.hashCode(lastName);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }
