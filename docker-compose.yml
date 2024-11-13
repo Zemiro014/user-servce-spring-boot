@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  pg-tasks:
+  pg_tasks:
     container_name: pg-user
     image: postgres:10
     ports:

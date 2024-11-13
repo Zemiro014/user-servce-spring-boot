@@ -32,4 +32,12 @@ public class BaseEntity {
         result = 31 * result + Objects.hashCode(version);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "BaseEntity{" +
+                "id=" + id +
+                ", version=" + version +
+                '}';
+    }
 }

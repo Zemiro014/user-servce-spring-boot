@@ -2,6 +2,7 @@ package com.jeronimo.user_service.service;
 
 import com.jeronimo.user_service.domain.Customer;
 import com.jeronimo.user_service.repositories.CustomerRepository;
+import com.jeronimo.user_service.web.dtoRequest.CustomerRequestDTO;
 import com.jeronimo.user_service.web.dtoResponse.CustomerResponseDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,8 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
@@ -57,6 +57,22 @@ class CustomerServiceTest {
         assertEquals(customers.size(), 2);
 
         verify(customerRepository, times(1)).findAll();
+    }
+
+    @Test
+    void createNewCustomer(){
+        CustomerRequestDTO requestDTO = CustomerRequestDTO.builder()
+                .firstName("First Name")
+                .lastName("Second Name")
+                .build();
+        when(customerRepository.save(any())).thenReturn(buildListOfCustomer().get(1));
+        CustomerResponseDTO responseDTO = customerService.createNewCustomer(requestDTO);
+
+        assertNotNull(responseDTO);
+        assertEquals("First Name", responseDTO.getFirstName());
+        assertEquals("Second Name", responseDTO.getLastName());
+
+        verify(customerRepository, times(1)).save(any());
     }
 
     private List<Customer> buildListOfCustomer() {
