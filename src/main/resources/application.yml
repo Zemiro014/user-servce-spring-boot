@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: user-service
+  profiles:
+    active: local
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#  metrics:
+#    export:
+#      elastic:
+#        enabled: true
+#        host: http://elasticsearch:9200
+#        index: metrics
+#        auto-create-index: true
