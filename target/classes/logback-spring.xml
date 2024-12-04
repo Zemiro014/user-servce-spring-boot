@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <springProperty name="logstashHost" source="logstash.host"/>
+    <springProperty name="logstashPort" source="logstash.port"/>
+    <springProperty name="logstashServiceName" source="logstash.service.name"/>
+    <springProperty name="logLevel" source="logstash.log.level"/>
+
     <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>localhost:5000</destination>
+        <destination>${logstashHost}:${logstashPort}</destination>
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <mdc />
@@ -12,7 +18,9 @@
                 <pattern>
                     <pattern>
                         {
-                        "app": "userService"
+                        "service": "${logstashServiceName}",
+                        "traceId": "%X{traceId:-}",
+                        "spanId": "%X{spanId:-}"
                         }
                     </pattern>
                 </pattern>
@@ -23,7 +31,7 @@
             </providers>
         </encoder>
     </appender>
-    <root level="info">
+    <root level="${logLevel}">
         <appender-ref ref="logstash" />
     </root>
 </configuration>
