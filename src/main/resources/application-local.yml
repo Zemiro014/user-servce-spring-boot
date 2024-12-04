@@ -1,24 +1,11 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://127.0.0.1:5433/userDB
-    username: postgres
-    password: password
-    driver-class-name: org.postgresql.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
-
-# Flyway
-# flyway:
-#   url: jdbc:postgresql://127.0.0.1:5433/userDB
-#   user: postgres
-#   password: password
-#   enabled: true
-#   locations: classpath:db/migration
-#   schemas: public
+  config:
+    import: "optional:configserver:http://localhost:8888" # Importa as configurações do Config Server
+  cloud:
+    config:
+      uri: http://localhost:8888 # URL do seu Config Server
+      name: user-service-config # Nome do repositório no Config Server
+      profile: dev # Perfil ativo
+      label: main # Branch do repositório (opcional)
+    compatibility-verifier:
+      enabled: false
